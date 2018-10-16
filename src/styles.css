@@ -83,3 +83,48 @@ span.or {
     font-size: 20px;
     margin: 10px;
 }
+.register-form {
+    max-height: 400px;
+    overflow-y: scroll;
+    padding-top: 30px;
+}
+ul.nav.nav-tabs {
+    max-width: 283px;
+}
+.register-form a.nav-link {
+    color: #000;
+}
+.authentication-form a.nav-link.active {
+    background: #d8a302;
+    border-color: #d8a302;
+    color: #fff;
+}
+.register-form .auth-form-header h4 {
+    font-family: 'Niramit', sans-serif;
+    font-size: 18px;
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+.btn-auth {
+    min-height: 50px;
+    font-size: 18px;
+}
+.login-form{
+  max-height: 400px;
+}
