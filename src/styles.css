@@ -1,1 +1,85 @@
 /* You can add global styles to this file, and also import other style files */
+html{
+  height: 100%;
+}
+body, .main-content, .page-wrapper {
+  height: 100%;
+}
+.auth-wrapper{
+  height: 100%;
+  background: url(assets/images/background.jpg);
+  position: relative;
+}
+.authentication-form {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 800px;
+    height: 400px;
+    border-radius: 3px;
+    background: #fff;
+}
+.auth-image {
+    padding: 0!important;
+    background: url(assets/images/login.jpg);
+    min-height: 400px!important;
+    background-size: 232%;
+    background-repeat: no-repeat;
+    background-position: 23%;
+}
+form.auth-form {
+    padding: 22px 10px;
+}
+.auth-form-header {
+    margin-bottom: 22px;
+    margin-left: 10px;
+}
+.auth-form-header h4 {
+    font-family: 'Niramit', sans-serif;
+    font-size: 30px;
+}
+form.auth-form .form-control {
+    min-height: 50px;
+}
+.btn-auth {
+    width: 100%;
+}
+.auth-overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: #000000e0;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #d8a302!important;
+    border-color: #d8a302!important;
+}
+.btn-primary.focus, .btn-primary:focus {
+    box-shadow: 0 0 0 0.2rem rgba(216, 163, 2, 0.58)!important;
+}
+.btn-primary:hover {
+    color: #fff;
+    background-color: #333!important;
+    border-color: #333!important;
+}
+.form-control:focus {
+    color: rgba(216, 163, 2, 0.58)!important;
+    background-color: #fff;
+    border-color: rgba(216, 163, 2, 0.58)!important;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(216, 163, 2, 0.58)!important;
+}
+span.or {
+    display: block;
+    text-align: center;
+    font-family: 'Niramit', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    margin: 10px;
+}
