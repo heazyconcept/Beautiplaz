@@ -7,6 +7,6 @@ export class SecurityService {
 
   constructor(private http: HttpClient) { }
   registerUsers(){
-    return this.http.Get
+    // return this.http.get
   }
 }
