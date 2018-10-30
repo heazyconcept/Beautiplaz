@@ -128,3 +128,57 @@ ul.nav.nav-tabs {
 .login-form{
   max-height: 400px;
 }
+@media(max-width:768px){
+    .authentication-form {
+        position: static;
+        margin: auto;
+        width: 100%;
+        height: auto;
+        background: transparent;
+    }
+    .auth-overlay {
+        background: transparent;
+    }
+    .auth-image {
+        min-height: unset!important;
+        background-position: 22% 0;
+    }
+    .auth-wrapper {
+        background-size: 100%;
+    }
+    form.auth-form {
+        background: #0009;
+        position: absolute;
+        width: 92%;
+        top: 86px;
+    }
+    .auth-form-header h4 {
+        color: #fff;
+    }
+    .forget-action small {
+        color: #fff;
+        
+    }
+    .forget-action{
+        margin-bottom: 10px
+    }
+    span.or {
+        display: none;
+    }
+    .btn-auth {
+        line-height: 32px;
+    }
+    .register-form {
+        max-height: unset;
+        overflow-y: auto;
+        padding-top: 30px;
+        display: block;
+        height: 640px;
+    }
+    .register-form a.nav-link {
+        color: #fff;
+    }
+    .register-action .btn-auth {
+        margin-top: 20px!important;
+    }
+}
