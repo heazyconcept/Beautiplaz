@@ -20,51 +20,55 @@
             </ul>
             <div class="tab-content">
               <div role="tabpanel" class="tab-pane fade show active" id="customer">
-                <form class="auth-form" action="" method="post">
+                <form class="auth-form" (ngSubmit)="registerCustomer()" #customerForm ="ngForm" novalidate>
+                    
                   <div class="auth-form-header">
                     <h4>Customer's Registration</h4>
                   </div>
+                  
                   <div class="form-group">
                     <div class="col-sm-12">
-                      <input type="text" class="form-control" id="inputEmail3" placeholder="Full name">
+                      <input type="text" class="form-control"  name="FullName" placeholder="Full name" [(ngModel)]="usersModel.FullName" >
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-12">
-                      <input type="email" class="form-control" id="inputEmail3" placeholder="Email address">
+                      <input type="email" class="form-control"  name="EmailAddress" placeholder="Email address" [(ngModel)]="usersModel.EmailAddress">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-12">
-                      <input type="text" class="form-control" id="inputEmail3" placeholder="Phone number">
+                      <input type="text" class="form-control"  name="PhoneNumber" placeholder="Phone number" [(ngModel)]="usersModel.PhoneNumber">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-12">
-                      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                      <input type="password" class="form-control"  name="Password" placeholder="Password" [(ngModel)]="usersModel.Password">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-12">
-                      <input type="password" class="form-control" id="inputPassword3" placeholder="Confirm password">
+                      <input type="password" class="form-control"  name="PasswordConfirm" placeholder="Confirm password" [(ngModel)]="usersModel.PasswordConfirm">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-12">
-                      <input type="text" class="form-control" id="inputEmail3" placeholder="Residential address">
+                      <input type="text" class="form-control"  name="UserAddress" placeholder="Residential address" [(ngModel)]="usersModel.UserAddress">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-12">
-                      <select type="text" class="form-control" id="inputEmail3">
+                      <select type="text" class="form-control"  name="State" [(ngModel)]="usersModel.State" (change)="onChange($event.target.value)">
                         <option value="">State</option>
+                        <option *ngFor="let state of states" [ngValue]="state.state">{{state.state}}</option>
                       </select>
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-12">
-                      <select type="text" class="form-control" id="inputEmail3">
+                      <select type="text" class="form-control"  name="LocalGovernment" [(ngModel)]="usersModel.LocalGovernment">
                         <option value="">Local Government</option>
+                        <option *ngFor="let lga of Lgas" [ngValue]="lga.local_government">{{lga.local_government}}</option>
                       </select>
                     </div>
                   </div>
@@ -83,81 +87,90 @@
 
               </div>
               <div role="tabpanel" class="tab-pane fade" id="vendor">
-                <form class="auth-form" action="" method="post">
+                <form class="auth-form" (ngSubmit)="registerVendor()" #vendorForm ="ngForm" novalidate >
                   <div class="auth-form-header">
                     <h4>Vendor's Registration</h4>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-12">
-                      <input type="text" class="form-control" id="inputEmail3" placeholder="Business name">
+                      <input type="text" class="form-control"  placeholder="Business name" name="Vendor.BusinessName" [(ngModel)]="usersModel.Vendor.BusinessName">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-12">
-                      <input type="text" class="form-control" id="inputEmail3" placeholder="Full name">
+                      <input type="text" class="form-control"  placeholder="Full name" name="FullName" [(ngModel)]="usersModel.FullName">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-12">
-                      <input type="email" class="form-control" id="inputEmail3" placeholder="Email address">
+                      <input type="email" class="form-control"  placeholder="Email address" name="EmailAddress" [(ngModel)] ="usersModel.EmailAddress">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-12">
-                      <input type="text" class="form-control" id="inputEmail3" placeholder="Phone number">
+                      <input type="text" class="form-control"  placeholder="Phone number" name="PhoneNumber" [(ngModel)]="usersModel.PhoneNumber">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-12">
-                      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                      <input type="password" class="form-control"  placeholder="Password" name="Password" [(ngModel)]="usersModel.Password">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-12">
-                      <input type="password" class="form-control" id="inputPassword3" placeholder="Confirm password">
+                      <input type="password" class="form-control"  placeholder="Confirm password" name="PasswordConfirm" [(ngModel)]="usersModel.PasswordConfirm">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-12">
-                      <input type="text" class="form-control" id="inputEmail3" placeholder="Residential address">
+                      <input type="text" class="form-control"  placeholder="Residential address" name="UserAddress" [(ngModel)]="usersModel.UserAddress">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-12">
-                      <select type="text" class="form-control" id="inputEmail3">
+                      <select type="text" class="form-control"  name="State" [(ngModel)]="usersModel.State" (change)="onChange($event.target.value)">
                         <option value="">State</option>
+                        <option *ngFor="let state of states" [ngValue]="state.state">{{state.state}}</option>
                       </select>
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-12">
-                      <select type="text" class="form-control" id="inputEmail3">
-                        <option value="">Local Government</option>
+                      <div class="form-group">
+                        <div class="col-sm-12">
+                          <select type="text" class="form-control"  name="LocalGovernment" [(ngModel)]="usersModel.LocalGovernment">
+                            <option value="">Local Government</option>
+                            <option *ngFor="let lga of Lgas" [ngValue]="lga.local_government">{{lga.local_government}}</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-12">
+                      <select type="text" class="form-control"  name="Vendor.ServiceRendered" [(ngModel)]="usersModel.Vendor.ServiceRendered" >
+                          <option value="">Service Category</option>
+                          <option *ngFor="let serv of allServices" [ngValue]="serv.Id">{{serv.Name}}</option>
                       </select>
+                      
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-12">
-                      <select type="text" class="form-control" id="inputEmail3">
-                        <option value="">Service Category</option>
-                      </select>
+                        <select type="text" class="form-control"  name="Vendor.BankName" [(ngModel)]="usersModel.Vendor.BankName" >
+                            <option value="">Bank Name</option>
+                            <option *ngFor="let bank of Banks" [ngValue]="bank">{{bank}}</option>
+                        </select>
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-12">
-                      <select type="text" class="form-control" id="inputEmail3">
-                        <option value="">Bank Name</option>
-                      </select>
+                      <input type="text" class="form-control"  placeholder="Account name" name="Vendor.AccountName" [(ngModel)]="usersModel.Vendor.AccountName">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-12">
-                      <input type="text" class="form-control" id="inputEmail3" placeholder="Account name">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="col-sm-12">
-                      <input type="text" class="form-control" id="inputEmail3" placeholder="Account number">
+                      <input type="text" class="form-control"  placeholder="Account number" name="Vendor.AccountNumber" [(ngModel)]="usersModel.Vendor.AccountNumber">
                     </div>
                   </div>
                   <div class="form-group">
