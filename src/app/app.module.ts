@@ -12,6 +12,8 @@ import { RegisterComponent } from './register/register.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { TopmenuComponent } from './topmenu/topmenu.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { FooterComponent } from './footer/footer.component';
     RegisterComponent,
     SidebarComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    DashboardComponent,
+    TopmenuComponent
   ],
   imports: [
     BrowserModule,

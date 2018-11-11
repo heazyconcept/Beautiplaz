@@ -10,19 +10,19 @@
 
           </div>
           <div class="col-md-6 login-form">
-            <form class="auth-form" #loginForm="ngForm">
+            <form class="auth-form" #loginForm="ngForm" (ngSubmit)="Login()"  novalidate>
               
               <div class="auth-form-header">
                 <h4>Login</h4>
               </div>
               <div class="form-group">
                 <div class="col-sm-12">
-                  <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                  <input type="email" class="form-control"  placeholder="Email" name="EmailAddress" [(ngModel)]="LoginModel.EmailAddress">
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-sm-12">
-                  <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                  <input type="password" class="form-control" name="Password" placeholder="Password" [(ngModel)]="LoginModel.Password">
                 </div>
               </div>
               <div class="form-group">
