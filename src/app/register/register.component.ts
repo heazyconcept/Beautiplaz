@@ -140,7 +140,7 @@ export class Users {
   public Role: string,
   public DateCreated: Date,
   public IsVendor: boolean,
-  public Vendor: Object
+  public Vendor: Vendor
   ){};
 
 }

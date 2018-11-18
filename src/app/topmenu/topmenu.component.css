@@ -1,0 +1,18 @@
+div#navbarSupportedContent {
+    background: #000;
+}
+.bg-dark {
+    background-color: #000000!important;
+}
+.user-avatar {
+    width: 50px!important;
+    float: right;
+    border-radius: 50%;
+    border: 2px solid #c8a404;
+    height: 50px;
+}
+.user-link:after {
+    display: block;
+    content: "";
+    clear: both;
+}

@@ -15,4 +15,10 @@ export class SecurityService {
   login(logindata: loginData){
     return this.http.post<any>(myGlobals.URL + "/security/Login", logindata);
   }
+  getSession(){
+    return this.http.get(myGlobals.URL + '/security/getSession/' );
+  }
+  checkSession(){
+    return this.http.get<myGlobals.ApiResponse>(myGlobals.URL + '/security/checkSession/' );
+  }
 }

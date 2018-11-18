@@ -1,0 +1,23 @@
+.logo-img {
+    width: 67%!important;
+    margin: auto!important;
+    display: block;
+}
+.menu-icon {
+    font-size: 30px;
+    color: #fff;
+    text-align: center;
+}
+.menu-text {
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+.menu-item a:hover {
+    background: #c8a404!important;
+    text-decoration: none;
+}
+li.menu-item {
+    border-bottom: 1px dotted #fff3;
+}

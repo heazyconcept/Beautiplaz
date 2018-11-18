@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
         console.log(data);
         
         if(data.StatusCode == "00"){
+          sessionStorage.setItem("userDetails",JSON.stringify(data.StatusMessage));
           this.router.navigate(['dashboard']);
         }else{
           swal("Error", data.StatusMessage, "error");

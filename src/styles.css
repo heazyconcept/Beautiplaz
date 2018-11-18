@@ -156,11 +156,11 @@ a:focus {
 }
 
 .navbar {
-    padding: 15px 10px;
+    padding: 0!important;
     background: #fff;
     border: none;
     border-radius: 0;
-    margin-bottom: 40px;
+    margin-bottom: 0px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -188,11 +188,12 @@ a:focus {
 }
 
 #sidebar {
-    min-width: 250px;
-    max-width: 250px;
-    background: #7386D5;
+    min-width: 182px;
+    max-width: 190px;
+    background: rgb(0, 0, 0);
     color: #fff;
     transition: all 0.3s;
+    position: fixed;
 }
 
 #sidebar.active {
@@ -201,18 +202,21 @@ a:focus {
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #6d7fcc;
+    background: #000;
 }
 
 #sidebar ul.components {
-    padding: 20px 0;
+    padding: 0px 0 90px;
     border-bottom: 1px solid #47748b;
 }
 
 #sidebar ul p {
     color: #fff;
     padding: 10px;
+    text-align: center;
+    margin-bottom: 0;
 }
+
 
 #sidebar ul li a {
     padding: 10px;
@@ -246,7 +250,7 @@ a[data-toggle="collapse"] {
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: #6d7fcc;
+    background: #000;
 }
 
 ul.CTAs {
@@ -278,11 +282,34 @@ a.article:hover {
 
 #content {
     width: 100%;
-    padding: 20px;
+    padding: 0;
     min-height: 100vh;
     transition: all 0.3s;
+    margin-left: 190px;
 }
-
+img.img-responsive {
+    width: 100%;
+}
+.collapse-button{
+    padding-left: 0!important;
+}
+.btn-transparent {
+    background: transparent!important;
+    color: #c8a404!important;
+    border: none!important;
+}
+.btn-transparent.focus, .btn-transparent:focus{
+    box-shadow: none!important;
+}
+.body-wrapper {
+    padding: 20px 0px;
+}
+.col-10 {
+    max-width: 10%!important;
+}
+.btn-white{
+    color: #fff!important;
+}
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
