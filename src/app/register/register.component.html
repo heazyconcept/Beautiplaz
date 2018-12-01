@@ -53,7 +53,7 @@
                   </div>
                   <div class="form-group">
                     <div class="col-sm-12">
-                      <input type="text" class="form-control"  name="UserAddress" placeholder="Residential address" [(ngModel)]="usersModel.UserAddress">
+                      <input type="text" #UserAddress class="form-control"  name="UserAddress" placeholder="Residential address" [(ngModel)]="usersModel.UserAddress">
                     </div>
                   </div>
                   <div class="form-group">
@@ -123,7 +123,7 @@
                   </div>
                   <div class="form-group">
                     <div class="col-sm-12">
-                      <input type="text" class="form-control"  placeholder="Residential address" name="UserAddress" [(ngModel)]="usersModel.UserAddress">
+                      <input type="text" #UserAddress class="form-control"  placeholder="Residential address" name="UserAddress" [(ngModel)]="usersModel.UserAddress">
                     </div>
                   </div>
                   <div class="form-group">
@@ -179,7 +179,7 @@
 
                       <div class="register-action">
                         <span class="or">Or</span>
-                        <a class="btn btn-secondary btn-auth" href="/register">Register Now</a>
+                        <a class="btn btn-secondary btn-auth" routerLink="">Login</a>
                       </div>
                     </div>
                   </div>

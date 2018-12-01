@@ -1,8 +1,9 @@
-<div class="wrapper">
+<div class="wrapper" >
     <app-sidebar></app-sidebar>
     <div id="content">
         <app-topmenu></app-topmenu>
-        <div class="body-wrapper">
+        {{userSession.Role}}
+        <div class="body-wrapper " *ngIf="userSession.Role === 'Customer';else customerDashboard">
             <div class="container">
                 <div class="user-details">
                     <div class="summ-action">
@@ -77,6 +78,82 @@
                     </div>
                 </div>
             </div>
+            <ng-template #customerDashboard>
+                <div class="container">
+                    <div class="user-details">
+                        <div class="summ-action">
+                            <div class="row">
+                                <div class="col-md-1 col-10">
+                                    <a class="btn btn-info btn-white">Edit Profile</a>
+                                </div>
+                                <div class="col-md-1 col-10">
+                                    <a class="btn btn-success btn-white">New Request customer</a>
+                                </div>
+    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="stat-wrapper">
+                                <div class="stat-item beauty-green">
+                                    <div class="stat-icon">
+                                        <i class="far fa-credit-card"></i>
+                                    </div>
+                                    <div class="stat-details">
+                                        <h4 class="stat-header">
+                                            Wallet Amount
+                                        </h4>
+                                    </div>
+                                    <div class="stat-body">
+                                        {{currency}} 25,000.00
+                                    </div>
+    
+                                </div>
+    
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="stat-wrapper">
+                                <div class="stat-item beauty-purple">
+                                    <div class="stat-icon">
+                                        <i class="far fa-file"></i>
+                                    </div>
+                                    <div class="stat-details">
+                                        <h4 class="stat-header">
+                                            Total Service Request
+                                        </h4>
+                                    </div>
+                                    <div class="stat-body">
+                                        50
+                                    </div>
+    
+                                </div>
+    
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="stat-wrapper">
+                                <div class="stat-item beauty-pink">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                    <div class="stat-details">
+                                        <h4 class="stat-header">
+                                            Rating
+                                        </h4>
+                                    </div>
+                                    <div class="stat-body">
+                                        5 Stars
+                                    </div>
+    
+                                </div>
+    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
         </div>
     </div>
 </div>

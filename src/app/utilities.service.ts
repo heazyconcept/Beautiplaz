@@ -17,4 +17,7 @@ export class UtilitiesService {
   getServices(){
     return this.http.get(myGlobals.URL + '/utilities/Services');
   }
+  getGeolocation(address){
+    return this.http.get<myGlobals.GoogleResponse>(myGlobals.GOOGLEURL + "?address=" + address + "&key=" + myGlobals.GOOGLEAPI)
+  }
 }

@@ -21,6 +21,8 @@ export class DashboardComponent implements OnInit {
       this.router.navigate(['']);
     }else{
       this.userSession = JSON.parse(sessionStorage.getItem("userDetails"));
+      console.log(this.userSession);
+      
     }
     this.currency = myGlobals.CURRENCY;
   }

@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+/// <reference types="@types/googlemaps" />
+import { Component, ViewChild, ElementRef, OnInit, NgZone } from '@angular/core';
+import { MapsAPILoader } from '@agm/core';
+// import {} from '@types/googlemaps';
 import { SecurityService } from '../security.service';
 import { UtilitiesService } from '../utilities.service';
 import swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-register',
@@ -9,8 +13,9 @@ import swal from 'sweetalert2';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  @ViewChild('UserAddress') public searchElement: ElementRef;
   
-  constructor(private _securityServices: SecurityService, private _utilitiesServices : UtilitiesService) { }
+  constructor(private _securityServices: SecurityService, private _utilitiesServices : UtilitiesService, private _mapsapiloader: MapsAPILoader, private _ngzone: NgZone) { }
   Lgas: Object;
   Banks = [ 
     "Access Bank",
@@ -53,7 +58,35 @@ export class RegisterComponent implements OnInit {
   
   states: Object;
   allServices: Object; 
+  vendorModel = new Vendor(0,0,"","","","",0,0,new Date(),0,new Date());
+  usersModel = new Users(1, "", "", "", "", "", "", "", "", "", new Date(),"", "", false, this.vendorModel);
   ngOnInit() {
+    this._mapsapiloader.load().then(
+      () => {
+        // console.log(data);
+        let autocomplete = new google.maps.places.Autocomplete(this.searchElement.nativeElement, 
+          {
+            types: ["geocode"]
+          }
+          );
+        autocomplete.addListener(
+          'pace_changed', 
+          () => {
+            // console.log(data);
+            
+            this._ngzone.run(
+              () => {
+                let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+                // console.log(data);
+                if(place.geometry == undefined || place.geometry == null){
+                  return;
+                }
+              }
+            )
+          }
+          )
+      }
+    )
     this._utilitiesServices.getState()
     .subscribe(
       (data) => {
@@ -76,29 +109,46 @@ export class RegisterComponent implements OnInit {
     
   }
  
-  vendorModel = new Vendor(0,0,"","","","",0,0,new Date(),0,new Date());
-  usersModel = new Users(1, "", "", "", "", "", "", "", "", "", new Date(),false, this.vendorModel);
+  
 
   registerCustomer(){
     if(this.usersModel.Password != this.usersModel.PasswordConfirm){
       swal('Error', 'Password Mismath', 'error');
       return;
     }
-    this._securityServices.register(this.usersModel)
+    this._utilitiesServices.getGeolocation(this.searchElement.nativeElement.value)
     .subscribe(
       (data) => {
-        console.log(data);
-        if(data.StatusCode == "00"){
-          swal("Success", "You have registered successfully", "success");
+       
+        if(data.status == "OK"){
+          let Result = data.results[0];
+          this.usersModel.Longitude = Result.geometry.location.lng;
+          this.usersModel.Latitude = Result.geometry.location.lat;
+          this.usersModel.UserAddress = this.searchElement.nativeElement.value;
+          this._securityServices.register(this.usersModel)
+          .subscribe(
+            (data) => {
+              console.log(data);
+              if(data.StatusCode == "00"){
+                swal("Success", "You have registered successfully", "success");
+              }else{
+                swal("Error", data.StatusMessage, "error");
+              }
+
+            },
+            (error) => {
+              console.log(error);
+            }
+          );
         }else{
-          swal("Error", data.StatusMessage, "error");
+          swal("Error", 'Your address is not valid', "error");
+          return;
         }
 
-      },
-      (error) => {
-        console.log(error);
       }
-    );
+    )
+    
+    
 
   }
   registerVendor(){
@@ -106,22 +156,40 @@ export class RegisterComponent implements OnInit {
       swal('Error', 'Password Mismath', 'error');
       return;
     }
-    this.usersModel.IsVendor = true;
-    this._securityServices.register(this.usersModel)
+    this._utilitiesServices.getGeolocation(this.searchElement.nativeElement.value)
     .subscribe(
       (data) => {
-        console.log(data);
-        if(data.StatusCode == "00"){
-          swal("Success", "You have registered successfully", "success");
-        }else{
-          swal("Error", data.StatusMessage, "error");
-        }
+        if(data.status == "OK"){
+          let Result = data.results[0];
+          this.usersModel.Longitude = Result.geometry.location.lng;
+          this.usersModel.Latitude = Result.geometry.location.lat;
+          this.usersModel.IsVendor = true;
+          this.usersModel.UserAddress = this.searchElement.nativeElement.value;
+          this._securityServices.register(this.usersModel)
+          .subscribe(
+            (data) => {
+              console.log(data);
+              if(data.StatusCode == "00"){
+                swal("Success", "You have registered successfully", "success");
+              }else{
+                swal("Error", data.StatusMessage, "error");
+              }
 
+            },
+            (error) => {
+              console.log(error);
+            }
+          );
+        }else{
+          swal("Error", 'Your address is not valid', "error");
+          return;
+        }
       },
       (error) => {
         console.log(error);
       }
-    );
+    )
+    
 
   }
 
@@ -139,6 +207,8 @@ export class Users {
   public LocalGovernment: string,
   public Role: string,
   public DateCreated: Date,
+  public Longitude: string,
+  public Latitude: string,
   public IsVendor: boolean,
   public Vendor: Vendor
   ){};
